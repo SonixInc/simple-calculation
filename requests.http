@@ -4,7 +4,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "product": 1,
+  "productId": "a022fe44-3ba4-4b31-99aa-9f965e1ad15d",
   "taxNumber": "DE123456789",
   "couponCode": "D15"
 }
@@ -15,8 +15,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "product": 1,
+  "productId": "a022fe44-3ba4-4b31-99aa-9f965e1ad15d",
   "taxNumber": "IT12345678900",
   "couponCode": "D15",
-  "paymentProcessor": "paypal"
+  "paymentMethod": "paypal"
 }
