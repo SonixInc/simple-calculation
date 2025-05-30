@@ -38,3 +38,9 @@ install: ## Install dependencies without running the whole application.
 success-message:
 	@echo "You can now access the application at http://localhost:8337"
 	@echo "Good luck! 🚀"
+
+run-migrations: ## Runs database migrations.
+	${DC_RUN} php bin/console doctrine:migrations:migrate --no-interaction
+
+fixtures: ## Apply database fixtures
+	${DC_RUN} php bin/console doctrine:fixtures:load --no-interaction
