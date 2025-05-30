@@ -85,21 +85,25 @@ class AppFixtures extends Fixture
         $tax1 = new Tax();
         $tax1->setRate(19);
         $tax1->setCountryCode('DE');
+        $tax1->setPattern('XXXXXXXXX');
         $manager->persist($tax1);
 
         $tax2 = new Tax();
         $tax2->setRate(22);
         $tax2->setCountryCode('IT');
+        $tax2->setPattern('XXXXXXXXXXX');
         $manager->persist($tax2);
 
         $tax3 = new Tax();
         $tax3->setRate(20);
         $tax3->setCountryCode('FR');
+        $tax3->setPattern('YYXXXXXXXXX');
         $manager->persist($tax3);
 
         $tax4 = new Tax();
         $tax4->setRate(24);
         $tax4->setCountryCode('GR');
+        $tax4->setPattern('XXXXXXXXX');
         $manager->persist($tax4);
     }
 }
