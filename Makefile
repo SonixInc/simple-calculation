@@ -44,3 +44,6 @@ run-migrations: ## Runs database migrations.
 
 fixtures: ## Apply database fixtures
 	${DC_RUN} php bin/console doctrine:fixtures:load --no-interaction
+
+test: ## Runs tests for services and controllers
+	${DC_RUN} env APP_ENV=test php bin/phpunit
