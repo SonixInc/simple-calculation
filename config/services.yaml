@@ -27,3 +27,15 @@ services:
                 IT: 'XXXXXXXXXXX'
                 GR: 'XXXXXXXXX'
                 FR: 'YYXXXXXXXXX'
+
+    Systemeio\TestForCandidates\PaymentProcessor\PaypalPaymentProcessor: ~
+    Systemeio\TestForCandidates\PaymentProcessor\StripePaymentProcessor: ~
+
+    App\Payment\PaypalPaymentAdapter:
+        tags: ['app.payment.adapter']
+
+    App\Payment\StripePaymentAdapter:
+        tags: ['app.payment.adapter']
+
+    App\Service\PurchaseService:
+        arguments: [!tagged_iterator app.payment.adapter]
