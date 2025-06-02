@@ -58,6 +58,7 @@ readonly class PurchaseService
                 continue;
             }
 
+            $paymentAdapter->pay($order->getPrice());
             $this->entityManager->persist($order);
             $this->entityManager->flush();
 
