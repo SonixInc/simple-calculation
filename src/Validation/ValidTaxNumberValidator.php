@@ -36,6 +36,7 @@ class ValidTaxNumberValidator extends ConstraintValidator
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ value }}', $value)
                 ->addViolation();
+            return;
         }
 
         $regEx = $this->ruleToRegEx($rule);
