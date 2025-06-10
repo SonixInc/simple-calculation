@@ -36,7 +36,7 @@ class Promotion
     #[ORM\Column(type: Types::STRING)]
     private string $type;
 
-    #[ORM\Column(type: Types::FLOAT)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private float $discount;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]

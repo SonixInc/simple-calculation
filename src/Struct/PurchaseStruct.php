@@ -21,7 +21,7 @@ class PurchaseStruct
     public string $taxNumber;
 
     #[Assert\Length(max: 255)]
-    public string $couponCode;
+    public ?string $couponCode = null;
 
     #[Assert\NotBlank]
     #[Assert\Choice(choices: ['paypal', 'stripe'])]

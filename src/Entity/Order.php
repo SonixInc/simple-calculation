@@ -30,7 +30,7 @@ class Order
     #[ORM\Column(type: Types::STRING)]
     private string $state;
 
-    #[ORM\Column(type: Types::FLOAT)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private float $price;
 
     // For many products in order, we could create table order_line_items to store many products

@@ -28,7 +28,7 @@ class Product
     #[ORM\Column(type: Types::STRING)]
     private string $name;
 
-    #[ORM\Column(type: Types::FLOAT)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private float $price;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]

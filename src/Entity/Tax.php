@@ -29,7 +29,7 @@ class Tax
     #[ORM\Column(type: Types::STRING, unique: true)]
     private string $countryCode;
 
-    #[ORM\Column(type: Types::FLOAT)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private float $rate;
 
     #[ORM\Column(type: Types::STRING, nullable: true)]

@@ -22,5 +22,5 @@ class CalcPriceStruct
     public string $taxNumber;
 
     #[Assert\Length(max: 255)]
-    public string $couponCode;
+    public ?string $couponCode = null;
 }
