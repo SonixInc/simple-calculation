@@ -52,9 +52,10 @@ readonly class PriceService
             return $productPrice + $taxPrice;
         }
 
-        $discount = $this->calculatePromotionDiscount($productPrice, $promotion);
+        $price = $productPrice + $taxPrice;
+        $discount = $this->calculatePromotionDiscount($price, $promotion);
 
-        return $productPrice + $taxPrice - $discount;
+        return $price - $discount;
     }
 
     /**

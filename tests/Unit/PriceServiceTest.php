@@ -85,15 +85,15 @@ class PriceServiceTest extends TestCase
         $taxMock->method('getRate')->willReturn(19.0);
 
         $promotionMock = $this->createMock(Promotion::class);
-        $promotionMock->method('getDiscount')->willReturn(50.0);
+        $promotionMock->method('getDiscount')->willReturn(10.0);
         $promotionMock->method('getType')->willReturn(PromotionType::Percentage);
 
         $this->productRepository->method('findById')->willReturn($productMock);
         $this->taxRepository->method('findByCountryCode')->willReturn($taxMock);
         $this->promotionRepository->method('findByCode')->willReturn($promotionMock);
 
-        $price = $this->priceService->calculatePrice(Uuid::uuid4()->toString(), 'DE123456789', 'F10');
-        $this->assertEquals(69.0, $price);
+        $price = $this->priceService->calculatePrice(Uuid::uuid4()->toString(), 'DE123456789', 'P10');
+        $this->assertEquals(107.1, $price);
     }
 
     public function testCalculatePriceProductNotFound()

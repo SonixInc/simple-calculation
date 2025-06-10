@@ -43,6 +43,10 @@ readonly class PurchaseService
         float $price
     ): Order
     {
+        if ($price < 0) {
+            throw new DomainException('Cannot create an order with negative price');
+        }
+
         if (!$product = $this->productRepository->findById($productId)) {
             throw new DomainException(sprintf('Product with id %s is not found', $productId));
         }
