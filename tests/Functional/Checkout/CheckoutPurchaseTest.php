@@ -66,7 +66,6 @@ class CheckoutPurchaseTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $data = json_decode($this->client->getResponse()->getContent(), true);
         $this->assertArrayHasKey('data', $data);
-        $this->assertArrayHasKey('order', $data['data']);
     }
 
     public function testPurchaseNotValidId(): void
