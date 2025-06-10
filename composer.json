@@ -23,7 +23,8 @@
         "symfony/serializer": "6.4.*",
         "symfony/validator": "6.4.*",
         "symfony/yaml": "6.4.*",
-        "systemeio/test-for-candidates": "^1.0.2"
+        "systemeio/test-for-candidates": "^1.0.2",
+        "ext-http": "*"
     },
     "config": {
         "allow-plugins": {

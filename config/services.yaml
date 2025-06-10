@@ -39,3 +39,7 @@ services:
 
     App\Service\PurchaseService:
         arguments: [!tagged_iterator app.payment.adapter]
+
+    App\EventListener\ValidationExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }

@@ -12,6 +12,7 @@ use App\Util\ValidationListParser;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -32,14 +33,8 @@ class CheckoutController extends AbstractController
     }
 
     #[Route('/calculate-price', name: 'checkout.calc.price', methods: ['POST'])]
-    public function calcPrice(Request $request): JsonResponse
+    public function calcPrice(#[MapRequestPayload] CalcPriceStruct $data): JsonResponse
     {
-        $data = $this->serializer->deserialize($request->getContent(), CalcPriceStruct::class, 'json');
-        $errors = $this->validator->validate($data);
-        if (count($errors) > 0) {
-            return $this->json(['errors' => ValidationListParser::toArray($errors)], 400);
-        }
-
         try {
             $price = $this->priceService->calculatePrice($data->productId, $data->taxNumber, $data->couponCode);
         } catch (\DomainException $e) {
@@ -50,14 +45,8 @@ class CheckoutController extends AbstractController
     }
 
     #[Route('/purchase', name: 'checkout.purchase', methods: ['POST'])]
-    public function purchase(Request $request): JsonResponse
+    public function purchase(#[MapRequestPayload] PurchaseStruct $data): JsonResponse
     {
-        $data = $this->serializer->deserialize($request->getContent(), PurchaseStruct::class, 'json');
-        $errors = $this->validator->validate($data);
-        if (count($errors) > 0) {
-            return $this->json(['errors' => ValidationListParser::toArray($errors)], 400);
-        }
-
         try {
             $price = $this->priceService->calculatePrice($data->productId, $data->taxNumber, $data->couponCode);
             $order = $this->purchaseService->makePurchase($data->productId, $data->paymentMethod, $price);
